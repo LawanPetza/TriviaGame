@@ -1,10 +1,10 @@
 $(document).ready(function () {
 
     var message = {
-        correct: "Yes, that's right!",
+        correct: "Correct, good job!",
         inCorrect: "No, that's not correct!",
         endTime: "out of time!",
-        finished: "alright! Let's see how well you did"
+        finished: "All done! Let's see how well you did"
 
     }
 
@@ -44,19 +44,19 @@ $(document).ready(function () {
         $('#correctedAnswer').empty();
         answered = true;
 
-        $('#currectQuestion').html('Question #' + (currentQuestion + 1) + '/' + questions.length);
-        $('.question').html('<h2>' + questions[currentQuestion].question + '</h2>');
+        $('#currectQuestion').html('Question #' + (currentQuestion + 1) + '/' + TriviaQuestions.length);
+        $('.question').html('<h2>' + TriviaQuestions[currentQuestion].question + '</h2>');
         for (var i = 0; i < 4; i++) {
-            var multChoice = $('<div');
-            multChoice.text(questions[currentQuestion].multChoice[i]);
-            multChoice.attr({ 'data-index': i })
-            multChoice.addClass('thismultChoice');
-            $('.answerList').append(multChoice);
+            var Choices = $('<div');
+            Choices.text(TriviaQuestions[currentQuestion].multChoice[i]);
+            Choices.attr({ 'data-index': i })
+            Choices.addClass('thisChoice');
+            $('.multChoice').append(Choices);
 
         }
 
         countdown();
-        $('.thismultChoice').on('click', function () {
+        $('.thisChoice').on('click', function () {
             userSelect = $(this).data('index');
             clearInterval(time);
             answerPage();
@@ -85,11 +85,11 @@ $(document).ready(function () {
     function answerPage() {
 
         $('#currentQuestion').empty();
-        $('.thismultChoice').empty();
+        $('.thisChoice').empty();
         $('.question').empty();
 
-        var rightAnswerText = questions[currentQuestion].multChoice[questions[currentQuestion].answer];
-        var rightAnswerIndex = questions[currentQuestion].answer;
+        var rightAnswerText = TriviaQuestions[currentQuestion].multChoice[TriviaQuestions[currentQuestion].answer];
+        var rightAnswerIndex = TriviaQuestions[currentQuestion].answer;
 
         if ((userSelect === rightAnswerIndex) && (answered === true)) {
             correctAnswer++;
@@ -106,7 +106,7 @@ $(document).ready(function () {
             answered = true;
         }
 
-        if (currentQuestion === (questions.length - 1)) {
+        if (currentQuestion === (TriviaQuestions.length - 1)) {
             setTimeout(scoreBoard, 5000);
         } else {
             currentQuestion++;
@@ -120,7 +120,7 @@ $(document).ready(function () {
         $('#message').empty();
         $('$correctedAnswer').empty();
 
-        $('#finalMessage').html(message.finished);
+        $('#finalMessage').html(messages.finished);
         $('#correctAnswer').html("Correct Answers: " + correctAnswer);
         $('#inCorrectAnswer').html("Incorrect Answers: " + inCorrectAnswer);
         $('#unAnswered').html("Unanswered: " + Unanswered);
@@ -130,80 +130,59 @@ $(document).ready(function () {
 
     }
 
-    var questions = [{
+    var TriviaQuestions = [{
+        question: 'In 2011, which country hosted a Formula 1 race for the first time?',
+        answer: 3,
+        multChoice: ['Japan', 'Korea', 'Thailand', 'India'],
 
-        q1 = {
-            question: 'In 2011, which country hosted a Formula 1 race for the first time?',
-            answer: 3,
-            multChoice: ['Japan', 'Korea', 'Thailand', 'India'],
+    }, {
+        question: 'In football, who was nicknamed "The Divine Ponytail"?',
+        answer: 0,
+        multChoice: ['Roberto Baggio', 'Pele', 'Cristiano Ronaldo', 'Ronalinho'],
 
-        },
+    }, {
+        question: 'What flavour is Cointreau?',
+        answer: 1,
+        multChoice: ['Lemon', 'Orange', 'Cranberry', 'Lime'],
 
-        q2 = {
-            question: 'In football, who was nicknamed "The Divine Ponytail"?',
-            answer: 0,
-            multChoice: ['Roberto Baggio', 'Pele', 'Cristiano Ronaldo', 'Ronalinho'],
+    }, {
+        question: 'If you had Lafite-Rothschild on your dinner table, what would it be?',
+        answer: 0,
+        multChoice: ['Wine', 'Whiskey', 'Sangria', 'Prosecco'],
 
-        },
+    }, {
+        question: 'When did Margaret Thatcher become Prime Minister?',
+        answer: 3,
+        multChoice: ['1982', '1980', '1975', '1979'],
 
-        q3 = {
-            question: 'What flavour is Cointreau?',
-            answer: 1,
-            multChoice: ['Lemon', 'Orange', 'Cranberry', 'Lime'],
+    }, {
+        question: 'Name the three primary colors.',
+        answer: 1,
+        multChoice: ['Blue, green, and yellow', 'Red, yellow, and blue', 'Red, blue, and green', 'Green, blue, and red'],
 
-        },
-        q4 = {
-            question: 'If you had Lafite-Rothschild on your dinner table, what would it be?',
-            answer: 0,
-            multChoice: ['Wine', 'Whiskey', 'Sangria', 'Prosecco'],
+    }, {
+        question: 'What is the largest ocean in the world?',
+        answer: 0,
+        multChoice: ['Pacific', 'Arctic', 'Atlantic', 'None of above'],
 
-        },
-        q5 = {
-            question: 'When did Margaret Thatcher become Prime Minister?',
-            answer: 3,
-            multChoice: ['1982', '1980', '1975', '1979'],
+    }, {
+        question: 'What is the longest river in the world?',
+        answer: 2,
+        multChoice: ['Nile', 'Yellow', 'Amazon', 'Mekong'],
 
-        },
+    }, {
+        question: 'What is the capital city of Spain?',
+        answer: 1,
+        multChoice: ['Barcelona', 'Madrid', 'Valencia', 'Seville'],
 
-        q6 = {
-            question: 'Name the three primary colors.',
-            answer: 1,
-            multChoice: ['Blue, green, and yellow', 'Red, yellow, and blue', 'Red, blue, and green', 'Green, blue, and red'],
+    }, {
+        question: 'Where would you find the Sea of Tranquility?',
+        answer: 0,
+        multChoice: ['The Moon', 'Pluto', 'Jupiter', 'The Sun'],
 
-        },
-
-        q7 = {
-            question: 'What is the largest ocean in the world?',
-            answer: 0,
-            multChoice: ['Pacific', 'Arctic', 'Atlantic', 'None of above'],
-
-        },
-
-        q8 = {
-            question: 'What is the longest river in the world?',
-            answer: 2,
-            multChoice: ['Nile', 'Yellow', 'Amazon', 'Mekong'],
-
-        },
-
-        q9 = {
-            question: 'What is the capital city of Spain?',
-            answer: 1,
-            multChoice: ['Barcelona', 'Madrid', 'Valencia', 'Seville'],
-
-        },
-
-        q10 = {
-            question: 'Where would you find the Sea of Tranquility?',
-            answer: 0,
-            multChoice: ['The Moon', 'Pluto', 'Jupiter', 'The Sun'],
-
-        }
-
-
-    }];
+    }]:
+    
 
 
 
-  
-})
+
