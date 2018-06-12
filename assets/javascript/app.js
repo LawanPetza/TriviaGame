@@ -31,7 +31,7 @@ $(document).ready(function () {
         $('#finalMessage').empty();
         $('#correctAnswers').empty();
         $('#incorrectAnswers').empty();
-        $('#unAnswered').empty();
+        $('#unanswered').empty();
         currentQuestion = 0;
         correctAnswer = 0;
         incorrectAnswer = 0;
@@ -75,7 +75,7 @@ $(document).ready(function () {
 
     function showCountDown() {
         seconds--;
-        $('#timeleft').html('<h3>Time Remaining: ' + seconds + '</h3>');
+        $('#timeLeft').html('<h3>Time Remaining: ' + seconds + '</h3>');
         if (seconds < 1) {
             clearInterval(time);
             answered = false;
@@ -98,7 +98,7 @@ $(document).ready(function () {
 
         } else if ((userSelect !== rightAnswerIndex) && (answered === true)) {
             incorrectAnswer++;
-            $('#message').html(messages.inCorrect);
+            $('#message').html(messages.incorrect);
             $('#correctedAnswer').html('The correct answer was: ' + rightAnswerText);
         } else {
             unanswered++;
@@ -108,10 +108,10 @@ $(document).ready(function () {
         }
 
         if (currentQuestion === (TriviaQuestions.length - 1)) {
-            setTimeout(scoreBoard, 5000);
+            setTimeout(scoreBoard, 2000);
         } else {
             currentQuestion++;
-            setTimeout(newQuestion, 5000);
+            setTimeout(newQuestion, 2000);
         }
 
     }
@@ -119,12 +119,12 @@ $(document).ready(function () {
     function scoreBoard() {
         $('#timeLeft').empty();
         $('#message').empty();
-        $('$correctedAnswer').empty();
+        $('#correctedAnswer').empty();
 
         $('#finalMessage').html(messages.finished);
         $('#correctAnswers').html("Correct Answers: " + correctAnswer);
-        $('#incorrectAnswers').html("Incorrect Answers: " + inCorrectAnswer);
-        $('#unAnswered').html("Unanswered: " + Unanswered);
+        $('#incorrectAnswers').html("Incorrect Answers: " + incorrectAnswer);
+        $('#unanswered').html("Unanswered: " + unanswered);
         $('#startOverBtn').addClass('reset');
         $('#startOverBtn').show();
         $('#startOverBtn').html('Start Over?');
