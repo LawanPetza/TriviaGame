@@ -1,17 +1,17 @@
 $(document).ready(function () {
 
-    var message = {
+    var messages = {
         correct: "Correct, good job!",
-        inCorrect: "No, that's not correct!",
+        incorrect: "No, that's not correct!",
         endTime: "out of time!",
         finished: "All done! Let's see how well you did"
 
     }
 
     var currentQuestion;
-    var currentAnswer;
-    var inCorrectAnswer;
-    var Unanswered;
+    var correctAnswer;
+    var incorrectAnswer;
+    var unanswered;
     var seconds;
     var time;
     var answered;
@@ -24,17 +24,18 @@ $(document).ready(function () {
 
     $('#startOverBtn').on('click', function () {
         $(this).hide();
+        newGame();
     });
 
     function newGame() {
         $('#finalMessage').empty();
         $('#correctAnswers').empty();
-        $('#inCorrectAnswers').empty();
+        $('#incorrectAnswers').empty();
         $('#unAnswered').empty();
         currentQuestion = 0;
-        inCorrectAnswer = 0;
-        inCorrectAnswer = 0;
-        Unanswered = 0;
+        correctAnswer = 0;
+        incorrectAnswer = 0;
+        unanswered = 0;
         newQuestion();
 
     }
@@ -44,12 +45,12 @@ $(document).ready(function () {
         $('#correctedAnswer').empty();
         answered = true;
 
-        $('#currectQuestion').html('Question #' + (currentQuestion + 1) + '/' + TriviaQuestions.length);
+        $('#currentQuestion').html('Question #' + (currentQuestion + 1) + '/' + TriviaQuestions.length);
         $('.question').html('<h2>' + TriviaQuestions[currentQuestion].question + '</h2>');
         for (var i = 0; i < 4; i++) {
-            var Choices = $('<div');
+            var Choices = $('<div>');
             Choices.text(TriviaQuestions[currentQuestion].multChoice[i]);
-            Choices.attr({ 'data-index': i })
+            Choices.attr({ 'data-index': i });
             Choices.addClass('thisChoice');
             $('.multChoice').append(Choices);
 
@@ -93,15 +94,15 @@ $(document).ready(function () {
 
         if ((userSelect === rightAnswerIndex) && (answered === true)) {
             correctAnswer++;
-            $('#message').html(message.correct);
+            $('#message').html(messages.correct);
 
         } else if ((userSelect !== rightAnswerIndex) && (answered === true)) {
-            inCorrectAnswer++;
-            $('#message').html(message.inCorrect);
+            incorrectAnswer++;
+            $('#message').html(messages.inCorrect);
             $('#correctedAnswer').html('The correct answer was: ' + rightAnswerText);
         } else {
-            Unanswered++;
-            $('#message').html(message.endTime);
+            unanswered++;
+            $('#message').html(messages.endTime);
             $('#correctedAnswer').html('The correct answer was: ' + rightAnswerText);
             answered = true;
         }
@@ -121,8 +122,8 @@ $(document).ready(function () {
         $('$correctedAnswer').empty();
 
         $('#finalMessage').html(messages.finished);
-        $('#correctAnswer').html("Correct Answers: " + correctAnswer);
-        $('#inCorrectAnswer').html("Incorrect Answers: " + inCorrectAnswer);
+        $('#correctAnswers').html("Correct Answers: " + correctAnswer);
+        $('#incorrectAnswers').html("Incorrect Answers: " + inCorrectAnswer);
         $('#unAnswered').html("Unanswered: " + Unanswered);
         $('#startOverBtn').addClass('reset');
         $('#startOverBtn').show();
