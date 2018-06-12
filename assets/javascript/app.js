@@ -180,7 +180,8 @@ $(document).ready(function () {
         answer: 0,
         multChoice: ['The Moon', 'Pluto', 'Jupiter', 'The Sun'],
 
-    }]:
+    }];
+})
     
 
 
