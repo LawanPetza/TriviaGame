@@ -45,7 +45,7 @@ $(document).ready(function () {
         $('#correctedAnswer').empty();
         answered = true;
 
-        $('#currentQuestion').html('Question #' + (currentQuestion + 1) + '/' + TriviaQuestions.length);
+        $('#currentQuestion').html('Question ' + (currentQuestion + 1) + '/' + TriviaQuestions.length);
         $('.question').html('<h2>' + TriviaQuestions[currentQuestion].question + '</h2>');
         for (var i = 0; i < 4; i++) {
             var Choices = $('<div>');
@@ -180,6 +180,8 @@ $(document).ready(function () {
         question: 'Where would you find the Sea of Tranquility?',
         answer: 0,
         multChoice: ['The Moon', 'Pluto', 'Jupiter', 'The Sun'],
+
+        
 
     }];
 })

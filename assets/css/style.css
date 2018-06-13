@@ -5,9 +5,7 @@ body {
     font-size: 20px;
 }
 
-/* h1 {
-    color: rgb(61, 43, 226);
-} */
+
 header{
 	margin-bottom: 20px;
 }
@@ -26,7 +24,7 @@ header{
 
 .container{
     line-height: 50px;
-	margin-top: auto;
+	margin-top: 50px;
 	text-align: center;
 	height: 100%;
     width: auto;
@@ -38,7 +36,7 @@ header{
 
 }
 .question {
-    font-family: 'Black And White Picture', sans-serif;
+    font-family: 'Squada One', cursive;
     font-size: 30px;
     color: brown;
     font-weight: bold;
@@ -53,6 +51,8 @@ header{
 #correctedAnswer, #finalMessage, #message {
     font-family: 'IBM Plex Mono', monospace;
     color: red;
+    font-size: 25px;
+    font-weight: bold;
 }
 
 .thisChoice:hover{
