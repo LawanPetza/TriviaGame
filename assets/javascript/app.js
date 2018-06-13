@@ -108,10 +108,10 @@ $(document).ready(function () {
         }
 
         if (currentQuestion === (TriviaQuestions.length - 1)) {
-            setTimeout(scoreBoard, 2000);
+            setTimeout(scoreBoard, 3000);
         } else {
             currentQuestion++;
-            setTimeout(newQuestion, 2000);
+            setTimeout(newQuestion, 3000);
         }
 
     }
