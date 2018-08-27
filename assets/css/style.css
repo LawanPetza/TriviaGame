@@ -1,59 +1,57 @@
 body {
     background: url(../images/image.jpg);
-    font-family: 'Black And White Picture', sans-serif;
+    font-family: 'Squada One', cursive;
     text-align: center;
     font-size: 20px;
 }
 
-header{
-	margin-bottom: 20px;
-}
 
 .btn-primary,.reset{
 	background-color: darkblue;
 	color: white;
-	font-family: 'Pompiere', cursive;
 	font-size: 20px;
 	padding: 20px;
-    margin-top: 100px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 .btn-primary:hover, .reset:hover{
-	background-color: green;
+    background-color: green;
+    text-align: center;
+    
 }
-
 .container{
-    line-height: 50px;
-	margin-top: 50px;
+	margin-top: 10px;
 	text-align: center;
-	height: 100%;
-    width: auto;
-}
+} 
 
-.contentDiv {
-    background: rgba(255, 255, 255, 0.5)
+#quiz-area{
+    margin-top: 20px;
 }
 
 #currentQuestion {
-    font-family: 'Pompiere', cursive;
+    margin-top: 20px;
     font-size: 20px;
+    color: darkred;
 
 }
 .question {
-    font-family: 'Squada One', cursive;
+    margin-top: 20px;
     font-size: 30px;
-    color: brown;
+    color: white;
     font-weight: bold;
+ 
 
 }
 
 #timeLeft {
-    font-family: 'Pompiere', cursive;
+    margin-top: 20px;
     font-size: 10px;
+    color: darkred;
 }
 
-#correctedAnswer, #finalMessage, #message {
+#correctedAnswer, #finalMessage, #message, #unanswered, #incorrectAnswers, #correctAnswers {
     font-family: 'IBM Plex Mono', monospace;
-    color: red;
+    color: white;
     font-size: 25px;
     font-weight: bold;
 }
@@ -61,11 +59,15 @@ header{
 .thisChoice:hover{
 	background-color: #202364;
     color: white;
-    font-family: 'Pompiere', cursive;
-	padding: 10px;
+    padding: 10px;
+  
 }
 
-/* #gif{
-	margin: 30px;
-} */
+.thisChoice{
+    line-height: 40px;
+
+}
+
+
+
 
