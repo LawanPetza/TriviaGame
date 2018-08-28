@@ -4,7 +4,7 @@ $(document).ready(function () {
         correct: "Correct, good job!",
         incorrect: "No, that's not correct!",
         endTime: "out of time!",
-        finished: "All done! Let's see how well you did"
+        finished: "All done!"
 
     }
 
@@ -13,7 +13,7 @@ $(document).ready(function () {
     var incorrectAnswer;
     var unanswered;
     var seconds;
-    var time;
+    var timer;
     var answered;
     var userSelect;
 
@@ -32,6 +32,7 @@ $(document).ready(function () {
         $('#correctAnswers').empty();
         $('#incorrectAnswers').empty();
         $('#unanswered').empty();
+
         currentQuestion = 0;
         correctAnswer = 0;
         incorrectAnswer = 0;
@@ -59,7 +60,7 @@ $(document).ready(function () {
         countdown();
         $('.thisChoice').on('click', function () {
             userSelect = $(this).data('index');
-            clearInterval(time);
+            clearInterval(timer);
             answerPage();
         });
 
@@ -70,14 +71,14 @@ $(document).ready(function () {
         seconds = 15;
         $('#timeLeft').html('<h3>Time Remaining: ' + seconds + '</h3>');
         answered = true;
-        time = setInterval(showCountDown, 1000);
+        timer = setInterval(showCountDown, 1000);
     }
 
     function showCountDown() {
         seconds--;
         $('#timeLeft').html('<h3>Time Remaining: ' + seconds + '</h3>');
         if (seconds < 1) {
-            clearInterval(time);
+            clearInterval(timer);
             answered = false;
             answerPage();
         }
@@ -131,6 +132,7 @@ $(document).ready(function () {
 
     }
 
+    //question set
     var TriviaQuestions = [{
         question: 'In 2011, which country hosted a Formula 1 race for the first time?',
         answer: 3,
